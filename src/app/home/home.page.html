@@ -7,14 +7,46 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <h2 id="h2"> Organizador de eventos </h2>
+  <input #nameInput type = "text" placeholder="Nombre del evento"/>
+  <br>
+  <br>
+  <input #startdateInput type = "date" placeholder="Fecha de inicio"/>
+  <input #enddateInput type = "date" placeholder="Fecha de terminado"/>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+
+  <button (click) = "addItem(nameInput.value, startdateInput.value, enddateInput.value); nameInput.value = ''; startdateInput.value = ''; enddateInput.value = ''">
+    Agregar
+  </button>
+
+  <table border = "1" style = "margin-top: 20px; width: 100%; text-align: left;">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Fecha de inicio</th>
+        <th>Fecha de fin</th>
+        <th>Completado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor = "let item of items">
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.date1 }}</td>
+        <td>{{ item.date2 }}</td>
+
+        <td>
+          <input type = "checkbox"
+          [checked]= "item.completed"  
+          />
+        </td>
+        <td>
+          <button (click) = "removeItem(item.id)">Eliminar</button> 
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </ion-content>
