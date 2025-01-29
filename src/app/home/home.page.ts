@@ -10,7 +10,7 @@ import { NavController } from '@ionic/angular';
 export class HomePage {
 
   items: {
-    id: number; name: string; date1: string, date2: string,
+    id: number; name: string; date1: string, date2: string, ubication: string, ManagerName: string, ManagerPhone: string, 
     completed: boolean
   }[] = [];
   nextId: number = 1;
@@ -18,14 +18,18 @@ export class HomePage {
 
   constructor(public navCtrl: NavController) {}
 
-  addItem(name: string, date1: string, date2: string): void 
+  addItem(name: string, date1: string, date2: string, ubication: string, ManagerName: string, ManagerPhone: string): void 
   {
-    if (name.trim() && date1.trim() && date2.trim()) {
+    if (name.trim() && date1.trim() && date2.trim() && ubication.trim() && ManagerName.trim() && ManagerPhone.trim()) {
       this.items.push({
         id: this.nextId++,
         name: name.trim(),
         date1: date1.trim(),
         date2: date2.trim(),
+        ubication: ubication.trim(),
+        ManagerName: ManagerName.trim(),
+        ManagerPhone: ManagerPhone.trim(),
+
         completed: false,
       });
     } else {
@@ -42,9 +46,9 @@ export class HomePage {
     }
   }
 
-  removeItem(id: number): void
-  {
-    this.items = this.items.filter(item => item.id !==id);
-  }
+  // removeItem(id: number): void
+  // {
+  //   this.items = this.items.filter(item => item.id !==id);
+  // }
 
 }

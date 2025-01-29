@@ -8,26 +8,40 @@
 
 <ion-content [fullscreen]="true">
   <h2 id="h2"> Organizador de eventos </h2>
-  <input #nameInput type = "text" placeholder="Nombre del evento"/>
+  <input #nameInput type = "text" placeholder="Nombre del evento" class="input"/>
   <br>
   <br>
-  <input #startdateInput type = "date" placeholder="Fecha de inicio"/>
-  <input #enddateInput type = "date" placeholder="Fecha de terminado"/>
+  <input #startdateInput type = "date" placeholder="Fecha de inicio" class="input"/>
+  <input #enddateInput type = "date" placeholder="Fecha de terminado" class="input"/>
+  <br>
+  <br>
+  <input #ubication type = "text" placeholder="Ubicacion del evento" class="input"/>
+  <br>
+  <br>
+  <input #ManagerName type = "text" placeholder="Nombre del encargado" class="input"/>
+  <br> 
+  <br>
+  <input #ManagerPhone type = "number" placeholder="Telefono del encargado" class="input"/>
+  <br>
+  <br>
 
-
-  <button (click) = "addItem(nameInput.value, startdateInput.value, enddateInput.value); nameInput.value = ''; startdateInput.value = ''; enddateInput.value = ''">
+  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" (click) = "addItem(nameInput.value, startdateInput.value, enddateInput.value, ubication.value, ManagerName.value, ManagerPhone.value); 
+  nameInput.value = ''; startdateInput.value = ''; enddateInput.value = ''; ubication.value =''; ManagerName.value; ManagerPhone.value ">
     Agregar
   </button>
 
-  <table border = "1" style = "margin-top: 20px; width: 100%; text-align: left;">
+  <table border = "1" style = "margin-top: 20px; width: 100%; text-align: center;">
     <thead>
       <tr>
         <th>ID</th>
         <th>Nombre</th>
         <th>Fecha de inicio</th>
         <th>Fecha de fin</th>
-        <th>Completado</th>
-        <th>Acciones</th>
+        <th>Ubicacion del evento</th>
+        <th>Nombre del encargado</th>
+        <th>Telefono del encargado</th>
+        <th>Confirmacion del evento</th>
+        <!-- <th>Acciones</th> -->
       </tr>
     </thead>
 
@@ -37,15 +51,17 @@
         <td>{{ item.name }}</td>
         <td>{{ item.date1 }}</td>
         <td>{{ item.date2 }}</td>
+        <td>{{ item.ubication }}</td>
+        <td>{{ item.ManagerName }}</td>
+        <td>{{ item.ManagerPhone }}</td>
 
         <td>
-          <input type = "checkbox"
-          [checked]= "item.completed"  
-          />
+          <input type = "checkbox" [checked]= "item.completed"/>
         </td>
-        <td>
+
+        <!-- <td>
           <button (click) = "removeItem(item.id)">Eliminar</button> 
-        </td>
+        </td> -->
       </tr>
     </tbody>
   </table>
